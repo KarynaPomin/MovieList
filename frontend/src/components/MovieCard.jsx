@@ -9,6 +9,7 @@ function MovieCard({movie}) {
 
     return <div className="movie-card">
         <div className="movie-poster">
+            {/* movie.url -- src of image from folder */}
             <img src={movie.url} alt={movie.title} />
             <div className="movie-overlay">
                 <button className="favorite-btn" onClick={onFavoriteClick}>
@@ -17,6 +18,7 @@ function MovieCard({movie}) {
             </div>
             <div className="movie-info">
                 <h3>{movie.title}</h3>
+                {/* movie.release_date?.split("-")[0] */}
                 <p>{movie.release_date}</p>
             </div>
         </div>
