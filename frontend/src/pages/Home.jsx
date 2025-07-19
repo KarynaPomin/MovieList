@@ -1,6 +1,7 @@
 import MovieCard from '../components/MovieCard';
 import '../css/Home.css'
 import { useState, useEffect } from 'react';
+import { getPopularMovies, searchMovies } from '../services/api';
 
 
 function Home() {
@@ -11,13 +12,15 @@ function Home() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-    const loadPopularMovies = () => {
+    const loadPopularMovies = async () => {
         try {
-            const popularMovies = [
-                { id: 1, title: "John Wick", release_date: "2020" },
-                { id: 2, title: "Terminator", release_date: "1999" },
-                { id: 3, title: "The Matrix", release_date: "1998" }
-            ];
+            // const popularMovies = [
+            //     { id: 1, title: "John Wick", release_date: "2020" },
+            //     { id: 2, title: "Terminator", release_date: "1999" },
+            //     { id: 3, title: "The Matrix", release_date: "1998" }
+            // ];
+
+            const popularMovies = await getPopularMovies();
             setAllMovies(popularMovies);
             setMovies(popularMovies);
         } catch (err) {

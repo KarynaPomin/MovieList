@@ -13,7 +13,7 @@ function MovieCard({movie}) {
 
     return <div className="movie-card">
         <div className="movie-poster">
-            <img src="" alt={movie.title}/>
+            <img src={`/images/${movie.cover_image}`} alt={movie.title}/>
             <div className="movie-overlay">
                 <button className={`favorite-btn ${favorite ? "active" : ""}`} onClick={onFavoriteClick}>
                     ♥
