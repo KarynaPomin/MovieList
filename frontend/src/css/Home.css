@@ -70,3 +70,42 @@
   font-size: larger;
   font-weight: bold;
 }
+
+/* 
+.genres-list {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #f3f4f6;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: fit-content;
+}
+.MuiButton-root {
+  background-color: #84ccf5;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease;
+}
+
+.MuiButton-root:hover {
+  background-color: #60a5fa;
+}
+
+.MuiMenu-paper {
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.MuiMenuItem-root {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 10px 20px;
+  transition: background-color 0.2s ease;
+}
+.MuiMenuItem-root:hover {
+  background-color: #e0f2fe;
+} */

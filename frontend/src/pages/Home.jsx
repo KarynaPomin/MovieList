@@ -57,7 +57,7 @@ function Home() {
         }
     };
 
-    const [selectedGenres, setSelectetGenres] = useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     const [genresQuery, setGenresQuery] = useState("")
 
     const handleGenreSelect = async (genre) => {
@@ -91,11 +91,11 @@ function Home() {
     }
 
     function handleOpenMenu(event) {
-        setSelectetGenres(event.currentTarget);
+        setAnchorEl(event.currentTarget);
     }
     
     function handleCloseMenu(event) {
-        setSelectetGenres(null);
+        setAnchorEl(null);
     }
 
     return <div className="home">
@@ -119,9 +119,9 @@ function Home() {
             </Button>
             <Menu
                 keepMounted
-                selectedGenres={selectedGenres}
+                anchorEl={anchorEl}
                 onClose={handleCloseMenu}
-                open={Boolean(selectedGenres)}>
+                open={Boolean(anchorEl)}>
 
                 <MenuItem onClick={() => handleGenreSelect("Action")} id='action'>
                     Action
