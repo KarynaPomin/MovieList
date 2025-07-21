@@ -1,10 +1,21 @@
 .navbar {
-  background-color: #000000;
+  background-color: #0C0E23;
   padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-logo {
+  color: #3B7BA7;
+}
+
+.nav-logo:hover {
+  color: aqua;
+  transition: color 0.2 ease-in;
+  text-shadow: 0px -2px 14px #3B7BA7;
+  transition: text-shadow 0.2s ease-out;
 }
 
 .navbar-brand {
@@ -22,10 +33,11 @@
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.2s;
+  color: #3B7BA7;
 }
 
 .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #3b7ca72d;
 }
 
 @media (max-width: 768px) {

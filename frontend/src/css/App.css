@@ -13,3 +13,7 @@
   -webkit-user-select: none;
   font-family: var(--main-font-family);
 }
+
+main {
+  background: linear-gradient(90deg, #0E122F, #060412);
+}

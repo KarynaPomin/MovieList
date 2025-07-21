@@ -5,6 +5,7 @@ import { getPopularMovies, searchMovies } from '../services/api';
 import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
+import ButtonGroup from "@mui/material/ButtonGroup"
 
 
 function Home() {
@@ -60,20 +61,21 @@ function Home() {
         setGenresQuery(genre);
         setLoading(true);
         try {
-            if (genre === "All") {
-                setMovies(allMovies); 
-            }
-            else {
-                const searchGenreResults = allMovies.filter(movie =>    
+            const searchGenreResults = allMovies.filter(movie =>    
                 movie.genre.toLowerCase().includes(genre.toLocaleLowerCase())  
             );
 
-            if (searchGenreResults.length === 0)
-                throw "This is an error!";
-
-                setMovies(searchGenreResults)
+            // TODO: gdy wyświetla się błąd to nie ma wyświetlanych filmów.
+            // TODO: dodoć css do movie pafge.
+            if (genre === "All") 
+                setMovies(allMovies); 
+            else {
+                if (searchGenreResults.length === 0)
+                    throw "This is an error!";
+                else
+                    setMovies(searchGenreResults)
             }
-        
+            
             setError(null)
         } catch (err) {
             console.log(err);
@@ -100,11 +102,24 @@ function Home() {
             className='search-input'
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}/>
-            <button type='submit' className='search-button'>Search</button>
+            <Button type='submit' className='search-button' variant="contained">Search</Button>
         </form>
 
         <div className='genres-list'>
-            <Button
+            <ButtonGroup 
+                variant="text" 
+                aria-label="Basic button group"
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleOpenMenu}
+            >
+                <Button onClick={() => handleGenreSelect("All")} id='sci-fi'>All</Button>
+                <Button onClick={() => handleGenreSelect("Action")} id='action'>Action</Button>
+                <Button onClick={() => handleGenreSelect("Thriller")} id='thtiller'>Thriller</Button>
+                <Button onClick={() => handleGenreSelect("Sci-Fi")} id='sci-fi'>Sci-Fi</Button>
+            </ButtonGroup>
+            
+            {/* <Button
                 aria-controls="simple-menu"
                 aria-haspopup="true"
                 onClick={handleOpenMenu}
@@ -130,7 +145,7 @@ function Home() {
                     Show All
                 </MenuItem>
 
-            </Menu>
+            </Menu> */}
         </div>
     
         {genresQuery !== "All" && 

@@ -10,6 +10,10 @@
   font-size: 2.5rem;
   color: #ffffff;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  border-bottom: #3B7BA7 solid 2px;
+  border-radius: 10px;
+  box-shadow: 0px 30px 30px -10px #001B3A;
+  padding: 10px;
 }
 
 .favorites-empty {

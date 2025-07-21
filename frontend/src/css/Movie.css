@@ -1,0 +1,41 @@
+.movie-info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: left;
+    gap: 2rem;
+    padding: 2rem;
+    background-color: #111;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.movie-info img {
+    width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.movie-info-block {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.movie-info-block h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #e50914;
+}
+
+.movie-info-block p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #ccc;
+}
+
