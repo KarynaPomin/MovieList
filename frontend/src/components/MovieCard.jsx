@@ -1,5 +1,7 @@
 import "../css/MovieCard.css"
 import { useMovieContext } from "../contexts/MovieContext"
+import { Link } from "react-router-dom"
+
 
 function MovieCard({movie}) {
     const {isFavorite, addToFavorites, removeFromFavorites} = useMovieContext()
@@ -11,20 +13,24 @@ function MovieCard({movie}) {
         else addToFavorites(movie)
     }
 
-    return <div className="movie-card">
-        <div className="movie-poster">
-            <img src={`/images/${movie.cover_image}`} alt={movie.title}/>
-            <div className="movie-overlay">
-                <button className={`favorite-btn ${favorite ? "active" : ""}`} onClick={onFavoriteClick}>
-                    ♥
-                </button>
+    return (
+        <Link to={`/movies/${movie.id}`} className="movie-card-link">
+            <div className="movie-card">
+                <div className="movie-poster">
+                    <img src={`/images/${movie.cover_image}`} alt={movie.title}/>
+                    <div className="movie-overlay">
+                        <button className={`favorite-btn ${favorite ? "active" : ""}`} onClick={onFavoriteClick}>
+                            ♥
+                        </button>
+                    </div>
+                </div>
+                <div className="movie-info">
+                    <h3>{movie.title}</h3>
+                    <p>{movie.release_date?.split("-")[0]}</p>
+                </div>
             </div>
-        </div>
-        <div className="movie-info">
-            <h3>{movie.title}</h3>
-            <p>{movie.release_date?.split("-")[0]}</p>
-        </div>
-    </div>
+        </Link>
+    )
 }
 
 export default MovieCard

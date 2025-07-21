@@ -5,6 +5,7 @@ import { MovieProvider } from './contexts/MovieContext';
 import NavBar from './components/NavBar';
 import Home from "./pages/Home"
 import Favorites from './pages/Favorites';
+import Movie from './pages/Movie';
 
 function App() {
   const movieNumber = 1;
@@ -15,7 +16,8 @@ function App() {
     <main className='main-content'>
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route  path='/favorites' element={<Favorites />}/>
+        <Route path='/favorites' element={<Favorites />} />
+        <Route path='/movies/:id' element={<Movie />} />
       </Routes>
     </main>
     </MovieProvider>

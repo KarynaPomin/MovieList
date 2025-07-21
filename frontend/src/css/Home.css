@@ -71,6 +71,10 @@
   font-weight: bold;
 }
 
+.movie-card-link {
+  cursor: pointer;
+}
+
 /* 
 .genres-list {
   display: flex;
