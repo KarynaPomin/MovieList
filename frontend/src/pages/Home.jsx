@@ -1,7 +1,10 @@
 import MovieCard from '../components/MovieCard';
 import '../css/Home.css'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { getPopularMovies, searchMovies } from '../services/api';
+import Menu from "@mui/material/Menu";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
 
 
 function Home() {
@@ -54,6 +57,47 @@ function Home() {
         }
     };
 
+    const [selectedGenres, setSelectetGenres] = useState(null);
+    const [genresQuery, setGenresQuery] = useState("")
+
+    const handleGenreSelect = async (genre) => {
+        if (loading) return;
+
+        setGenresQuery(genre);
+        setLoading(true);
+        try {
+            if (genre === "All") {
+                setMovies(allMovies); 
+            }
+            else {
+                const searchGenreResults = allMovies.filter(movie =>    
+                movie.genre.toLowerCase().includes(genre.toLocaleLowerCase())  
+            );
+
+            if (searchGenreResults.length === 0)
+                throw "This is an error!";
+
+                setMovies(searchGenreResults)
+            }
+        
+            setError(null)
+        } catch (err) {
+            console.log(err);
+            setError("Failed to search movies by genre...")
+        } finally {
+            handleCloseMenu();
+            setLoading(false);
+        }
+    }
+
+    function handleOpenMenu(event) {
+        setSelectetGenres(event.currentTarget);
+    }
+    
+    function handleCloseMenu(event) {
+        setSelectetGenres(null);
+    }
+
     return <div className="home">
         <form onSubmit={handleSearch} className='search-form'>
             <input 
@@ -65,6 +109,39 @@ function Home() {
             <button type='submit' className='search-button'>Search</button>
         </form>
 
+        <div className='genres-list'>
+            <Button
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                onClick={handleOpenMenu}
+            >
+                Genres
+            </Button>
+            <Menu
+                keepMounted
+                selectedGenres={selectedGenres}
+                onClose={handleCloseMenu}
+                open={Boolean(selectedGenres)}>
+
+                <MenuItem onClick={() => handleGenreSelect("Action")} id='action'>
+                    Action
+                </MenuItem>
+                <MenuItem onClick={() => handleGenreSelect("Thriller")} id='thtiller'>
+                    Thriller
+                </MenuItem>
+                <MenuItem onClick={() => handleGenreSelect("Sci-Fi")} id='sci-fi'>
+                    Sci-Fi
+                </MenuItem>
+                <MenuItem onClick={() => handleGenreSelect("All")} id='all'>
+                    Show All
+                </MenuItem>
+
+            </Menu>
+        </div>
+    
+        {genresQuery !== "All" && 
+            <div className='genre-message'>{genresQuery}</div>
+        }
         {error && <div className='error-message'>{error}</div>}
 
         {loading ? (

@@ -61,3 +61,12 @@
   width: 100%;
   box-sizing: border-box;
 }
+
+.error-message {
+  color: rgb(201, 62, 62);
+}
+
+.genre-message {
+  font-size: larger;
+  font-weight: bold;
+}
