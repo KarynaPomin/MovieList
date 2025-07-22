@@ -1,7 +1,7 @@
 import MovieCard from '../components/MovieCard';
 import '../css/Home.css'
 import { useState, useEffect, use } from 'react';
-import { getPopularMovies, searchMovies } from '../services/api';
+import { getGenres, getPopularMovies, searchMovies } from '../services/api';
 import Menu from "@mui/material/Menu";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
@@ -12,6 +12,7 @@ function Home() {
     const [searchQuery, setSearchQuery] = useState("");
     const [allMovies, setAllMovies] = useState([]);
     const [movies, setMovies] = useState([]);
+    const [allGenres, setAllGenres] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -65,13 +66,13 @@ function Home() {
                 movie.genre.toLowerCase().includes(genre.toLocaleLowerCase())  
             );
 
-            // TODO: gdy wyświetla się błąd to nie ma wyświetlanych filmów.
-            // TODO: dodoć css do movie pafge.
             if (genre === "All") 
                 setMovies(allMovies); 
             else {
-                if (searchGenreResults.length === 0)
+                if (searchGenreResults.length === 0){
+                    setMovies([]);
                     throw "This is an error!";
+                }
                 else
                     setMovies(searchGenreResults)
             }
@@ -94,6 +95,22 @@ function Home() {
         setAnchorEl(null);
     }
 
+    useEffect (() => {
+        const loadAllGenres = async () => {
+            try {
+                const genres = await getGenres();
+                setAllGenres(genres);
+            } catch (err) {
+                console.log(err);
+                setError("Failed to load genres...")
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        loadAllGenres();
+    }, [])
+
     return <div className="home">
         <form onSubmit={handleSearch} className='search-form'>
             <input 
@@ -113,10 +130,22 @@ function Home() {
                 aria-haspopup="true"
                 onClick={handleOpenMenu}
             >
-                <Button onClick={() => handleGenreSelect("All")} id='sci-fi'>All</Button>
+                {allGenres.map((g) => (
+                    <Button
+                        key={g}
+                        onClick={() => handleGenreSelect(g)}
+                        id={g}
+                    >
+                        {g}
+                    </Button>
+                ))}
+
+
+
+                {/* <Button onClick={() => handleGenreSelect("All")} id='sci-fi'>All</Button>
                 <Button onClick={() => handleGenreSelect("Action")} id='action'>Action</Button>
                 <Button onClick={() => handleGenreSelect("Thriller")} id='thtiller'>Thriller</Button>
-                <Button onClick={() => handleGenreSelect("Sci-Fi")} id='sci-fi'>Sci-Fi</Button>
+                <Button onClick={() => handleGenreSelect("Sci-Fi")} id='sci-fi'>Sci-Fi</Button> */}
             </ButtonGroup>
             
             {/* <Button

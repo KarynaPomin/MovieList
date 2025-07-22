@@ -15,3 +15,12 @@ export const searchMovies = async (query) => {
     const data = await response.json();
     return data;
 }
+
+export const getGenres = async () => {
+    const response = await fetch(`${BASE_URL}/get_genres.php`);
+    console.log("Fetch response:", response);
+    const genres = await response.json();
+    console.log("Genres:", genres);
+    return ["All", ...genres.map(g => g.genre)];
+};
+
