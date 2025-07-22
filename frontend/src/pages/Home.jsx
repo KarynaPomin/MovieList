@@ -135,46 +135,13 @@ function Home() {
                         key={g}
                         onClick={() => handleGenreSelect(g)}
                         id={g}
+                        className='genre-button'
                     >
                         {g}
                     </Button>
                 ))}
 
-
-
-                {/* <Button onClick={() => handleGenreSelect("All")} id='sci-fi'>All</Button>
-                <Button onClick={() => handleGenreSelect("Action")} id='action'>Action</Button>
-                <Button onClick={() => handleGenreSelect("Thriller")} id='thtiller'>Thriller</Button>
-                <Button onClick={() => handleGenreSelect("Sci-Fi")} id='sci-fi'>Sci-Fi</Button> */}
             </ButtonGroup>
-            
-            {/* <Button
-                aria-controls="simple-menu"
-                aria-haspopup="true"
-                onClick={handleOpenMenu}
-            >
-                Genres
-            </Button>
-            <Menu
-                keepMounted
-                anchorEl={anchorEl}
-                onClose={handleCloseMenu}
-                open={Boolean(anchorEl)}>
-
-                <MenuItem onClick={() => handleGenreSelect("Action")} id='action'>
-                    Action
-                </MenuItem>
-                <MenuItem onClick={() => handleGenreSelect("Thriller")} id='thtiller'>
-                    Thriller
-                </MenuItem>
-                <MenuItem onClick={() => handleGenreSelect("Sci-Fi")} id='sci-fi'>
-                    Sci-Fi
-                </MenuItem>
-                <MenuItem onClick={() => handleGenreSelect("All")} id='all'>
-                    Show All
-                </MenuItem>
-
-            </Menu> */}
         </div>
     
         {genresQuery !== "All" && 

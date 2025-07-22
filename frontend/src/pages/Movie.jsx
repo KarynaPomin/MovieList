@@ -41,10 +41,10 @@ function Movie() {
         <div className="movie-info">
             <img src={`/images/${movie.cover_image}`} alt={movie.title} />
             <div className="movie-info-block">
-                <h3>Title: {movie.title}</h3>
-                <p>Genre: {movie.genre}</p>
-                <p>Release date: {movie.release_date}</p>
-                <p>Description: {movie.description}</p>
+                <h3>{movie.title}</h3>
+                <p><span>Genre: </span>{movie.genre}</p>
+                <p><span>Release date: </span>{movie.release_date}</p>
+                <p><span>Description: </span>{movie.description}</p>
             </div>
         </div>
     );

@@ -77,15 +77,6 @@
   cursor: pointer;
 }
 
-.MuiButton {
-  color: white;
-  background-color: #3B7BA7;
-}
-
-.MuiButton:hover {
-  background-color: #001B3A;
-}
-
 .genre-message {
   display: flex;
   justify-content: center;

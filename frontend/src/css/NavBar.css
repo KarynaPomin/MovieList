@@ -11,13 +11,6 @@
   color: #3B7BA7;
 }
 
-.nav-logo:hover {
-  color: aqua;
-  transition: color 0.2 ease-in;
-  text-shadow: 0px -2px 14px #3B7BA7;
-  transition: text-shadow 0.2s ease-out;
-}
-
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: bold;
@@ -29,15 +22,19 @@
 }
 
 .nav-link {
-  font-size: 1rem;
+  font-size: 1.2rem;
   padding: 0.5rem 1rem;
   border-radius: 4px;
   transition: background-color 0.2s;
   color: #3B7BA7;
 }
 
-.nav-link:hover {
-  background-color: #3b7ca72d;
+.nav-link:hover,
+.nav-logo:hover {
+  color: aqua;
+  transition: color 0.2 ease-in;
+  text-shadow: 0px -2px 14px #3B7BA7;
+  transition: text-shadow 0.2s ease-out;
 }
 
 @media (max-width: 768px) {

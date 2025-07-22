@@ -3,9 +3,11 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: left;
+    max-height: 600px;
     gap: 2rem;
-    padding: 2rem;
-    background-color: #111;
+    padding: 3%;
+    background-color: #0c0e237d;
+    border-radius: 10px;
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -14,7 +16,8 @@
     width: 300px;
     height: auto;
     border-radius: 12px;
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2);
+    border: #3B7BA7 solid 2px;
+    box-shadow: 0px 2px 10px 10px #001B3A;
     object-fit: cover;
     flex-shrink: 0;
 }
@@ -26,16 +29,29 @@
     justify-content: flex-start;
 }
 
-.movie-info-block h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #e50914;
-}
-
-.movie-info-block p {
+.movie-info-block p,
+.movie-info-block span {
     font-size: 1.1rem;
     line-height: 1.6;
     margin-bottom: 1rem;
+}
+
+.movie-info-block p {
+    color: #ccc;
+}
+
+.movie-info-block span {
+    color: #4d9dd2b9;
+    font-size: large;
+}
+
+.movie-info-block h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #3B7BA7;
+}
+
+.genres-list .genre-button:focus{
     color: #ccc;
 }
 
