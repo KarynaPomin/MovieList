@@ -1,1 +1,1 @@
-![MovieList screenshot](./screenshots/MainPage.png)
+![MovieList screenshot](./screenshots/Horrors.png)
